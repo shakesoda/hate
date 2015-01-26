@@ -1,13 +1,11 @@
--- Do not change this file manually
--- Generated with dev/create-init.lua
+local hate = (...)
 
 local ffi = require 'ffi'
 local C = ffi.load(ffi.os == "Windows" and 'bin/SDL2' or "SDL2")
 local sdl = {C=C}
-local current_folder = (...):gsub('%.[^%.]+$', '') .. "."
-local registerdefines = require(current_folder .. "sdl2.defines")
 
-require(current_folder .. "sdl2.cdefs")
+local registerdefines = hate.sdl2.defines
+local _cdefs = hate.sdl2.cdefs
 
 local function register(luafuncname, funcname)
    local symexists, msg = pcall(function()
@@ -134,9 +132,9 @@ register('threadID', 'SDL_ThreadID')
 register('getThreadID', 'SDL_GetThreadID')
 register('setThreadPriority', 'SDL_SetThreadPriority')
 register('waitThread', 'SDL_WaitThread')
-register('tLSCreate', 'SDL_TLSCreate')
-register('tLSGet', 'SDL_TLSGet')
-register('tLSSet', 'SDL_TLSSet')
+register('TLSCreate', 'SDL_TLSCreate')
+register('TLSGet', 'SDL_TLSGet')
+register('TLSSet', 'SDL_TLSSet')
 register('RWFromFile', 'SDL_RWFromFile')
 register('RWFromFP', 'SDL_RWFromFP')
 register('RWFromMem', 'SDL_RWFromMem')
@@ -517,8 +515,8 @@ register('renderReadPixels', 'SDL_RenderReadPixels')
 register('renderPresent', 'SDL_RenderPresent')
 register('destroyTexture', 'SDL_DestroyTexture')
 register('destroyRenderer', 'SDL_DestroyRenderer')
-register('gL_BindTexture', 'SDL_GL_BindTexture')
-register('gL_UnbindTexture', 'SDL_GL_UnbindTexture')
+register('GL_BindTexture', 'SDL_GL_BindTexture')
+register('GL_UnbindTexture', 'SDL_GL_UnbindTexture')
 register('getTicks', 'SDL_GetTicks')
 register('getPerformanceCounter', 'SDL_GetPerformanceCounter')
 register('getPerformanceFrequency', 'SDL_GetPerformanceFrequency')

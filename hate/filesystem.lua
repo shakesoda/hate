@@ -1,7 +1,7 @@
-local current_folder = (...):gsub('%.[^%.]+$', '') .. "."
+local hate = (...)
 
 local ffi = require "ffi"
-local physfs = require(current_folder .. "physfs")
+local physfs = hate.physfs
 
 local filesystem = {}
 

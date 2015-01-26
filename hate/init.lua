@@ -1,8 +1,9 @@
 local current_folder = (...):gsub('%.[^%.]+$', '') .. "."
+local libhate = require(current_folder .. "graphene")
 
 local ffi = require "ffi"
-local sdl = require(current_folder .. "sdl2")
-local opengl = require(current_folder .. "opengl")
+local sdl = libhate.sdl2
+local opengl = libhate.opengl
 
 local flags
 
@@ -231,12 +232,12 @@ function hate.init()
 	sdl.init(sdl.INIT_EVERYTHING)
 
 	if config.timer then
-		hate.timer = require(current_folder .. "timer")
+		hate.timer = libhate.timer
 		hate.timer.init()
 	end
 
 	if config.filesystem then
-		hate.filesystem = require(current_folder .. "filesystem")
+		hate.filesystem = libhate.filesystem
 		hate.filesystem.init(arg[0], hate.config.name)
 	end
 
@@ -288,7 +289,7 @@ function hate.init()
 		hate.state.window = window
 		hate.state.gl_context = ctx
 
-		hate.graphics = require(current_folder .. "graphics")
+		hate.graphics = libhate.graphics
 		hate.graphics._state = hate.state
 
 		-- TODO
