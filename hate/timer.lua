@@ -1,5 +1,6 @@
-local current_folder = (...):gsub('%.[^%.]+$', '') .. "."
-local sdl = require(current_folder .. "sdl2")
+local hate = (...)
+
+local sdl = hate.sdl2
 
 local timer = {}
 
